@@ -1,0 +1,23 @@
+1. WHERE
+SELECT Brand, Model, Price 
+FROM Guitars 
+WHERE GuitarType = 'Electric';
+2. JOIN 
+SELECT Sales.SaleID, Customers.FullName AS CustomerName, Sales.SaleDate
+FROM Sales
+JOIN Customers ON Sales.CustomerID = Customers.CustomerID;
+3. GROUP BY + AGGREGATE FUNCTIONS
+SELECT EmployeeID, SUM(TotalAmount) AS TotalRevenueGenerated
+FROM Sales
+GROUP BY EmployeeID;
+4. JOIN + AGGREGATE FUNCTIONS
+SELECT Guitars.Brand, Guitars.Model, SUM(SaleDetails.Quantity) AS TotalUnitsSold
+FROM SaleDetails
+JOIN Guitars ON SaleDetails.GuitarID = Guitars.GuitarID
+GROUP BY Guitars.Brand, Guitars.Model;
+5. WHERE, JOIN, AND AGGREGATE FUNCTIONS
+SELECT Customers.FullName, SUM(Sales.TotalAmount) AS LifetimeSpent
+FROM Sales
+JOIN Customers ON Sales.CustomerID = Customers.CustomerID
+WHERE Customers.FullName = 'Jimi Hendrix'
+GROUP BY Customers.FullName;
